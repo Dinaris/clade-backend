@@ -13,10 +13,9 @@ const API_KEY = process.env.API_KEY || 'eth-global-was-here';
 
 
 app.use(cors({
-    origin: 'http://localhost:3000,localhost:3001',
-    methods: 'GET,POST',
-    allowedHeaders: 'Content-Type,Authorization',
-    credentials: true
+    origin: '*', // Allow all origins
+    methods: '*', // Allow all methods
+    allowedHeaders: '*' // Allow all headers
 }));
 
 //middleware api-key
