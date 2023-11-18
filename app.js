@@ -5,10 +5,19 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
+const cors = require("cors");
 
 const app = express();
 
 const API_KEY = process.env.API_KEY || 'eth-global-was-here';
+
+
+app.use(cors({
+    origin: 'http://localhost:3000,localhost:3001',
+    methods: 'GET,POST',
+    allowedHeaders: 'Content-Type,Authorization',
+    credentials: true
+}));
 
 //middleware api-key
 app.use(function (req, res, next) {
