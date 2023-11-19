@@ -39,6 +39,16 @@ router.get('/:prefix', async function(req, res, next) {
   if (!data) {
     return res.status(404).send('Not found');
   }
+
+  const filter = req.query.filter;
+
+    if(filter){
+        const filteredData = data.filter((item) => {
+            return item.name === filter;
+        });
+        return res.send(filteredData);
+    }
+
   return res.send(data);
 });
 
