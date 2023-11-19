@@ -40,12 +40,11 @@ router.get('/:prefix', async function(req, res, next) {
     return res.status(404).send('Not found');
   }
 
-  const filter = req.query.filter;
+  const filterType = req.query.filterType;
+    const filterValue = req.query.filterValue;
 
-    if(filter){
-        const filteredData = data.filter((item) => {
-            return item.name === filter;
-        });
+    if (filterType && filterValue) {
+        const filteredData = data.filter(item => item[filterType] === filterValue);
         return res.send(filteredData);
     }
 
